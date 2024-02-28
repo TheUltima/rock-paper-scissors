@@ -1,24 +1,21 @@
-function getComputerChoice() {
-  const RNG = Math.random();
+const RPS_rules = {
+  rock: { scissors: true },
+  paper: { rock: true },
+  scissors: { paper: true },
+};
 
-  if (RNG < 1 / 3) {
-    return "Rock";
-  } else if (RNG >= 1 / 3 && RNG < 2 / 3) {
-    return "Paper";
-  } else if (RNG >= 2 / 3) {
-    return "Scissors";
-  }
+function getComputerChoice() {
+  const movesArray = Object.keys(RPS_rules);
+  const RNG = Math.floor(Math.random() * movesArray.length);
+
+  return movesArray[RNG];
 }
+
+getComputerChoice();
 
 function playRound(playerSelection, computerSelection) {
   let playerMove = playerSelection.toLowerCase();
   let compMove = computerSelection.toLowerCase();
-
-  const RPS_rules = {
-    rock: { scissors: true },
-    paper: { rock: true },
-    scissors: { paper: true },
-  };
 
   if (playerMove === compMove) {
     console.log(`It was a tie since you both picked ${playerMove}`);
