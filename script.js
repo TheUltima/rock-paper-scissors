@@ -5,13 +5,12 @@ const RPS_rules = {
 };
 
 function getComputerChoice() {
+  //Get all possible moves of RPS//
   const movesArray = Object.keys(RPS_rules);
-  const RNG = Math.floor(Math.random() * movesArray.length);
+  const moveRNG = Math.floor(Math.random() * movesArray.length);
 
-  return movesArray[RNG];
+  return movesArray[moveRNG];
 }
-
-getComputerChoice();
 
 function playRound(playerSelection, computerSelection) {
   let playerMove = playerSelection.toLowerCase();
@@ -35,7 +34,7 @@ function playRound(playerSelection, computerSelection) {
 
 function playGame() {
   for (let i = 0; i < 5; i++) {
-    const playerSelection = prompt("Choose your move against bot:", "rock");
+    const playerSelection = prompt("Choose your move against bot:", "Rock");
     playRound(playerSelection, getComputerChoice());
   }
 }
