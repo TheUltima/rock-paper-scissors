@@ -1,26 +1,31 @@
 function getComputerChoice() {
   const RNG = Math.random();
 
-  if (RNG > 1 / 3) {
+  if (RNG < 1 / 3) {
     return "Rock";
-  } else if (RNG > 2 / 3) {
+  } else if (RNG >= 1 / 3 && RNG < 2 / 3) {
     return "Paper";
-  } else return "Scissors";
+  } else if (RNG >= 2 / 3) {
+    return "Scissors";
+  }
 }
 
-console.log(getComputerChoice);
-console.log(getComputerChoice);
-
 function playRound(playerSelection, computerSelection) {
+  computerSelection.toLowerCase();
   return `You lose! Paper Beats Rock`;
 }
 
+const RPS_rules = {
+  Rock: { Scissors: true },
+  Paper: { Rock: true },
+  Scissors: { Paper: true },
+};
+
 const playerSelection = "rock";
 const computerSelection = getComputerChoice();
+console.log();
 
 function playGame() {
-  let roundsPlayed = 0;
-
   for (let i = 0; i < 5; i++) {
     playRound();
   }
