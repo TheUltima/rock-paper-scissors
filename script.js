@@ -10,20 +10,36 @@ function getComputerChoice() {
   }
 }
 
-function playRound(playerSelection, computerSelection) {
-  computerSelection.toLowerCase();
-  return `You lose! Paper Beats Rock`;
-}
-
-const RPS_rules = {
-  Rock: { Scissors: true },
-  Paper: { Rock: true },
-  Scissors: { Paper: true },
-};
-
 const playerSelection = "rock";
 const computerSelection = getComputerChoice();
-console.log();
+
+function playRound(playerSelection, computerSelection) {
+  let playerMove = playerSelection.toLowerCase();
+  let compMove = computerSelection.toLowerCase();
+
+  const RPS_rules = {
+    rock: { scissors: true },
+    paper: { rock: true },
+    scissors: { paper: true },
+  };
+
+  if (playerMove === compMove) {
+    console.log(`It was a tie since you both picked ${playerMove}`);
+    return;
+  }
+
+  if (RPS_rules[playerMove][compMove]) {
+    console.log(
+      `You picked ${playerMove}, while the computer picked ${compMove}. You win!!`
+    );
+  } else {
+    console.log(
+      `You picked ${playerMove}, while the computer picked ${compMove}. You lose`
+    );
+  }
+}
+
+playRound("rock", getComputerChoice());
 
 function playGame() {
   for (let i = 0; i < 5; i++) {
