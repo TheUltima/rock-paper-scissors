@@ -10,9 +10,6 @@ function getComputerChoice() {
   }
 }
 
-const playerSelection = "rock";
-const computerSelection = getComputerChoice();
-
 function playRound(playerSelection, computerSelection) {
   let playerMove = playerSelection.toLowerCase();
   let compMove = computerSelection.toLowerCase();
@@ -39,10 +36,11 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-playRound("rock", getComputerChoice());
-
 function playGame() {
   for (let i = 0; i < 5; i++) {
-    playRound();
+    const playerSelection = prompt("Choose your move against bot:", "rock");
+    playRound(playerSelection, getComputerChoice());
   }
 }
+
+playGame();
