@@ -25,14 +25,15 @@ let playerWins = 0;
 let computerWins = 0;
 let gameRunning = true;
 
+//Gets all possible moves of RPS//
+const movesArray = Object.keys(RPS_rules);
+
 const bothPlayerMoves = document.querySelector(".both-player-moves");
 const moveHeader = document.querySelector(".moves-header");
 const playerRoundsWon = document.querySelector(".player-win-count");
 const computerRoundsWon = document.querySelector(".computer-win-count");
 
 function getComputerChoice() {
-  //Get all possible moves of RPS//
-  const movesArray = Object.keys(RPS_rules);
   const moveRNG = Math.floor(Math.random() * movesArray.length);
 
   return movesArray[moveRNG];
@@ -72,17 +73,7 @@ function playRound(playerMove) {
 }
 
 //bind() method allows us to pass parameters to callback functions that have them.
-const rock = document.querySelector("#rock");
-rock.addEventListener("click", playRound.bind(null, "rock"));
-
-const paper = document.querySelector("#paper");
-paper.addEventListener("click", playRound.bind(null, "paper"));
-
-const scissors = document.querySelector("#scissors");
-scissors.addEventListener("click", playRound.bind(null, "scissors"));
-
-const lizard = document.querySelector("#lizard");
-lizard.addEventListener("click", playRound.bind(null, "lizard"));
-
-const spock = document.querySelector("#spock");
-spock.addEventListener("click", playRound.bind(null, "spock"));
+movesArray.forEach((move) => {
+  const moveButton = document.querySelector(`#${move}`);
+  moveButton.addEventListener("click", playRound.bind(null, `${move}`));
+});
