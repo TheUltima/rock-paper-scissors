@@ -1,0 +1,27 @@
+body {
+  height: 100vh;
+  display: flex;
+  flex-flow: column nowrap;
+  margin: 0;
+}
+
+footer {
+  background-color: antiquewhite;
+  flex: 0 1 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+}
+
+.moves-panel {
+  flex: 1;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.moves-header {
+  font-size: 24px;
+}

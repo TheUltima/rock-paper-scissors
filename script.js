@@ -38,5 +38,3 @@ function playGame() {
     playRound(playerSelection, getComputerChoice());
   }
 }
-
-playGame();
