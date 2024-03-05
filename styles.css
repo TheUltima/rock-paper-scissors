@@ -18,14 +18,32 @@ footer {
   font-size: 24px;
 }
 
-.moves-panel {
+.contents {
   flex: 1;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  padding-top: 52px;
+  gap: 32px;
+}
+
+.moves-panel {
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
+  gap: 32px;
 }
 
 .moves-header {
+  font-size: 48px;
+}
+
+.moves-buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.results {
   font-size: 24px;
 }

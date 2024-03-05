@@ -21,6 +21,15 @@ const RPS_rules = {
   },
 };
 
+let playerWins = 0;
+let computerWins = 0;
+let gameRunning = true;
+
+const bothPlayerMoves = document.querySelector(".both-player-moves");
+const moveHeader = document.querySelector(".moves-header");
+const playerRoundsWon = document.querySelector(".player-win-count");
+const computerRoundsWon = document.querySelector(".computer-win-count");
+
 function getComputerChoice() {
   //Get all possible moves of RPS//
   const movesArray = Object.keys(RPS_rules);
@@ -29,28 +38,19 @@ function getComputerChoice() {
   return movesArray[moveRNG];
 }
 
-function playRound(playerSelection) {
-  let playerMove = playerSelection;
-  let compMove = getComputerChoice();
-
-  if (playerMove === compMove) {
-    console.log(`It was a tie since you both picked ${playerMove}`);
-    return;
-  }
-
-  if (RPS_rules[playerMove][compMove]) {
-    console.log(
-      `You picked ${playerMove}, while the computer picked ${compMove}. You win!!`
-    );
-  } else {
-    console.log(
-      `You picked ${playerMove}, while the computer picked ${compMove}. You lose`
-    );
+function checkWinner() {
+  if (playerWins === 5) {
+    moveHeader.textContent = "You won the game!";
+    gameRunning = false;
+  } else if (computerWins === 5) {
+    moveHeader.textContent = "The computer won.";
+    gameRunning = false;
   }
 }
 
-function playRound2(playerSelection) {
-  const playerMove = playerSelection;
+function playRound(playerMove) {
+  if (!gameRunning) return;
+
   let compMove = getComputerChoice();
 
   if (playerMove === compMove) {
@@ -59,13 +59,15 @@ function playRound2(playerSelection) {
   }
 
   if (RPS_rules[playerMove][compMove]) {
-    console.log(
-      `You picked ${playerMove}, while the computer picked ${compMove}. You win!!`
-    );
+    bothPlayerMoves.textContent = `You picked ${playerMove}, the computer picked ${compMove}.`;
+    playerWins++;
+    playerRoundsWon.textContent = `Player wins: ${playerWins}`;
+    checkWinner();
   } else {
-    console.log(
-      `You picked ${playerMove}, while the computer picked ${compMove}. You lose`
-    );
+    bothPlayerMoves.textContent = `You picked ${playerMove}, the computer picked ${compMove}. You lost.`;
+    computerWins++;
+    computerRoundsWon.textContent = `Computer wins: ${computerWins}`;
+    checkWinner();
   }
 }
 
