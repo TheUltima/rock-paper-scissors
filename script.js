@@ -1,7 +1,24 @@
 const RPS_rules = {
-  rock: { scissors: true },
-  paper: { rock: true },
-  scissors: { paper: true },
+  rock: {
+    scissors: true,
+    lizard: true,
+  },
+  paper: {
+    rock: true,
+    spock: true,
+  },
+  scissors: {
+    paper: true,
+    lizard: true,
+  },
+  lizard: {
+    spock: true,
+    paper: true,
+  },
+  spock: {
+    rock: true,
+    scissors: true,
+  },
 };
 
 function getComputerChoice() {
@@ -12,9 +29,10 @@ function getComputerChoice() {
   return movesArray[moveRNG];
 }
 
-function playRound(playerSelection, computerSelection) {
-  let playerMove = playerSelection.toLowerCase();
-  let compMove = computerSelection.toLowerCase();
+function playRound(playerSelection) {
+  let playerMove = playerSelection;
+  let compMove = getComputerChoice();
+  console.log(playerMove);
 
   if (playerMove === compMove) {
     console.log(`It was a tie since you both picked ${playerMove}`);
@@ -32,9 +50,13 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-function playGame() {
-  for (let i = 0; i < 5; i++) {
-    const playerSelection = prompt("Choose your move against bot:", "Rock");
-    playRound(playerSelection, getComputerChoice());
-  }
-}
+const rock = document.querySelector("#rock");
+rock.addEventListener("click", playRound.bind(null, "rock"));
+
+const paper = document.querySelector("#paper");
+
+const scissors = document.querySelector("#scissors");
+
+const lizard = document.querySelector("#lizard");
+
+const spock = document.querySelector("#spock");

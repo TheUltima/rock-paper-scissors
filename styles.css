@@ -5,6 +5,10 @@ body {
   margin: 0;
 }
 
+a {
+  color: black;
+}
+
 footer {
   background-color: antiquewhite;
   flex: 0 1 50px;
